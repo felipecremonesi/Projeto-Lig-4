@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo Liga 4</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="icon.png" type="image/x-icon">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+</head>
+<body>
+  <div id="game-container">
+    <button class="column-button" style="left: 17vw;" onclick="dropPiece(0)">Coluna 1</button>
+    <button class="column-button" style="left: 22vw;" onclick="dropPiece(1)">Coluna 2</button>
+    <button class="column-button" style="left: 27vw;" onclick="dropPiece(2)">Coluna 3</button>
+    <button class="column-button" style="left: 32vw;" onclick="dropPiece(3)">Coluna 4</button>
+    <button class="column-button" style="left: 37vw;" onclick="dropPiece(4)">Coluna 5</button>
+    <button class="column-button" style="left: 42vw;" onclick="dropPiece(5)">Coluna 6</button>
+    <button class="column-button" style="left: 47vw;" onclick="dropPiece(6)">Coluna 7</button>
+    <button id="reset-button" onclick="resetButtonClicked()">Reiniciar Jogo</button>
+    <div id="game-message"></div>
+  </div>
+  
+<script src="https://threejs.org/build/three.js"></script>
+<script src="main.js"></script>
+
+<audio id="music" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+  Seu navegador não suporta a reprodução de áudio.
+</audio>
+
+<script>
+  const audio = document.getElementById("music");
+  const gui = new dat.GUI();
+
+  const guiParams = {
+    volume: audio.volume * 100
+  };
+
+  const volumeController = gui.add(guiParams, "volume", 0, 100).name("Volume");
+
+  volumeController.onChange(function (value) {
+    audio.volume = value / 100;
+  });
+</script>
+
+</body>
+</html>
